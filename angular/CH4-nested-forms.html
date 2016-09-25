@@ -1,0 +1,66 @@
+<html ng-app="notesApp">
+<head><title>Notes App</title></head>
+<body ng-controller="MainCtrl as ctrl">
+ <form novalidate name="myForm" ng-submit="ctrl.submit()">
+   <input type="text"
+          class="username"
+		  name="uname"
+		  ng-model="ctrl.user.username"
+		  required=""
+		  placeholder="Username"
+		  ng-minlength="4"/>
+	<input type="password"
+	       class="passowrd"
+		   name="pwd"
+		   ng-model="ctrl.user.password"
+		   placeholder="Password"
+		   required=""/>
+    <input type="email"
+	       class="email"
+		   name="mail"
+		   placeholder="E-Mail"
+		   />
+		   
+	<ng-form name="profile">
+	 <input type="text"
+	        name="firstName"
+			ng-model="ctrl.user.profile.firstName"
+			placeholder="First Name"
+			required>
+	<input type="text"
+	       name="middleName"
+		   placeholder="Middle Name"
+		   ng-model="ctrl.user.profile.middleName">
+	<input type="text"
+	       name="lastName"
+		   placeholder="Last Name"
+		   ng-model="ctrl.user.profile.lastName"
+		   required>
+	<input type="date"
+	       name="dob"
+		   placeholder="Date of Birth"
+		   ng-model="ctrl.user.profile.dob">
+	</ng-form>
+	
+	<span ng-show="myForm.profile.$invalid">
+	   Please fill out the profile information
+	</span>
+	<input type="submit"
+	       value="Submit"
+		   ng-disabled="myForm.$invalid"/>
+ </form> 
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js">
+   </script>
+   <script type="text/javascript">
+      angular.module('notesApp',[]).controller('MainCtrl',[function(){
+	     var self = this;
+		 self.submit = function(){
+		   console.log('Submitted data'+ self.user);
+		 };
+	  }]);
+   </script>
+</body>
+
+</html>
+
+

@@ -1,0 +1,14 @@
+<html ng-app="notesApp">
+<head><title>Hello AngularJS</title></head>
+<body ng-controller="MainCtrl">
+ Hello {{1+1}}nd time AngularJS
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js">
+ </script>
+ <script type="text/javascript">
+   angular.module('notesApp', []).controller('MainCtrl', [function(){
+                console.log('MainCtrl has been created');
+   
+   }]);
+  </script>
+</body>
+</html>  

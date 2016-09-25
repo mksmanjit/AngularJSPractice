@@ -1,0 +1,82 @@
+<html ng-app="notesApp">
+ <head><title>Notes App</title></head>
+ <body ng-controller="MainCtrl as ctrl">
+   <textarea ng-model="ctrl.user.address" required></textarea>
+   <input type="checkbox" ng-model="ctrl.user.agree">
+   <input type="checkbox" ng-model="ctrl.user.agree1" ng-true-value="'YES'" ng-false-value="'NO'">
+   
+   <div>
+     <h2> What are your favorite sports?</h2>
+	 <div ng-repeat="sport in ctrl.sports">
+	   <label ng-bind="sport.label"></label>
+	   <div>
+	    With Binding:
+		<input type="checkbox"
+		      ng-model="sport.selected"
+			  ng-true-value="'YES'"
+			  ng-false-value="'NO'">
+		</div>
+		<div>
+		  Using ng-check:
+		   <input type="checkbox" ng-checked="sport.selected == 'YES'">
+		</div>
+		<div>
+		   Current state: {{sport.selected}}
+		</div>
+	</div>
+   </div>
+   
+   <div ng-init="user ={gender: 'female'}">
+     <input type="radio"
+	        name="gender"
+			ng-model="user.gender"
+			value="male">
+	 <input type="radio" name="gender"
+	        ng-model="user.gender"
+			value="female">
+	{{user.gender}}
+   </div>
+   
+   <div ng-init="ctrl.otherGender = 'Jack'">
+     <input type="radio"
+	        name="gender1"
+			ng-model="ctrl.user1.gender1"
+			value="male" ng-click="ctrl.radioClick()">
+	 <input type="radio" name="gender1"
+	        ng-model="ctrl.user1.gender1"
+			value="female" ng-click="ctrl.radioClick()">
+	<input type="radio" name="gender1"
+	        ng-model="ctrl.user1.gender1"
+			ng-value="ctrl.otherGender" ng-click="ctrl.radioClick()">{{otherGender}}
+     {{ctrl.user1.gender1}}
+   </div>
+   
+   <div ng-init="location = 'India'">
+      <select ng-model="ctrl.location">
+	    <option value="USA">USA</option>
+		<option value="India">India</option>
+		<option value="Other">None of the above</option>
+	  </select>
+   </div>
+   
+   
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js">
+ </script>
+ <script type="text/javascript">
+   angular.module('notesApp',[]).controller('MainCtrl',[function(){
+       var self = this;
+	   //self.user1.gender1='female';
+	   self.otherGender = 'Other';
+	   self.sports = [
+	     {label: 'Basketball', selected: 'YES'},
+		 {label: 'Cricket', selected: 'NO'},
+		 {label: 'Soccer', selected: 'NO'},
+		 {label: 'Swimming', selected: 'YES'}
+	   ];
+	   self.radioClick = function(){
+	    console.log('hello'+'>>'+self.otherGender+'>>'+self.location+">>"+self.user1.gender1);
+	   };
+   }]);
+ </script>
+ </body>
+</html>

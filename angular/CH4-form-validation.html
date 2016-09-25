@@ -1,0 +1,28 @@
+<html ng-app="notesApp">
+<head><title>Notes App</title></head>
+<body ng-controller="MainCtrl as ctrl">
+ <form ng-submit="ctrl.submit()" name="myForm">
+    <input type="text" ng-model="ctrl.user.username" required>
+	<input type="passowrd" ng-model="ctrl.user.password" required>
+	
+	<input type="submit" value="Submit" ng-disabled="myForm.$invalid">
+	<button ng-click="ctrl.reset()" ng-disabled="myForm.$pristine">Reset</button>
+ </form>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js">
+   </script>
+  <script type="text/javascript">
+    angular.module('notesApp',[]).controller('MainCtrl',[function(){
+	
+	   var self = this;
+	   self.submit = function(){
+	     console.log('User clicked submit with ',self.user);
+	   };
+	   self.reset = function(){
+	     this.user.username = '';
+		 this.user.password ='';
+	   };
+	}]);
+  </script>
+</body>
+
+</html>
